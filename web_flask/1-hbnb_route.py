@@ -1,23 +1,26 @@
 #!/usr/bin/python3
-""" Script that starts a Flask web application """
+"""
+file: 1-hbnb_route.py
+desc: This module runs a simple flask app.
+Author: Monday odoh (Monemax)
+Date Created: January 14 2023
+"""
 from flask import Flask
 
 app = Flask(__name__)
-app.url_map.strict_slashes = False
 
 
-@app.route('/')
+@app.route("/", strict_slashes=False)
 def hello_hbnb():
-    """ Print Web """
-    return 'Hello HBNB!'
+    """Displays 'Hello HBNB! from the root path"""
+    return "Hello HBNB!"
 
 
-@app.route('/hbnb')
+@app.route("/hbnb", strict_slashes=False)
 def hbnb():
-    """ Print Web """
-    return 'HBNB'
+    """Displays 'HBNB' from the /hbnb path"""
+    return "HBNB"
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")

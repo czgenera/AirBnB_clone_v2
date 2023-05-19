@@ -1,28 +1,32 @@
 #!/usr/bin/python3
-"""script that starts a Flask web application"""
+"""
+file: 2-c_route.py
+desc: This module runs a simple flask app.
+Author: Gizachew Bayness (Elec Crazy)
+Date Created: Nov 10, 2022
+"""
 from flask import Flask
+
 app = Flask(__name__)
-app.url_map.strict_slashes = False
 
 
-@app.route('/')
+@app.route("/", strict_slashes=False)
 def hello_hbnb():
-    """print web"""
-    return 'Hello HBNB!'
+    """Displays 'Hello HBNB! from the root path"""
+    return "Hello HBNB!"
 
 
-@app.route('/hbnb')
+@app.route("/hbnb", strict_slashes=False)
 def hbnb():
-    """print web"""
-    return 'HBNB'
+    """Displays 'HBNB' from the /hbnb path"""
+    return "HBNB"
 
 
-@app.route('/c/<text>')
-def c_is_fun(text):
-    """print C followed by the value of the text variable"""
-    return 'C {}'.format(text.replace('_', ' '))
+@app.route("/c/<text>", strict_slashes=False)
+def ctext(text):
+    """Displays C <text>, replaces any _ with space"""
+    return "C {}".format(text.replace("_", " "))
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
